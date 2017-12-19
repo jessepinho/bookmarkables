@@ -1,0 +1,22 @@
+{
+  "name": "bookmarkables",
+  "version": "0.0.0",
+  "description": "Add bookmarks with tags!",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jessepinho/bookmarkables.git"
+  },
+  "keywords": [
+    "bookmarks",
+    "tags"
+  ],
+  "author": "Jesse Pinho <jesse@jessepinho.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jessepinho/bookmarkables/issues"
+  },
+  "homepage": "https://github.com/jessepinho/bookmarkables#readme"
+}
