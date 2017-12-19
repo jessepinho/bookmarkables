@@ -1,6 +1,21 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "manifest_version": 2,
+
+  "name": "Bookmarkables",
+  "description": "Add bookmarks with tags!",
+  "version": "0.0.1",
+
+  "browser_action": {
+    "default_popup": "index.html"
+  },
+
+  "permissions": [
+    "activeTab",
+    "bookmarks",
+    "storage"
+  ],
+
+  "short_name": "Bookmarkables",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,6 +23,7 @@
       "type": "image/x-icon"
     }
   ],
+
   "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#000000",
