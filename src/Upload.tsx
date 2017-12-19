@@ -1,8 +1,9 @@
 import * as React from 'react';
+import { Registry } from './schema';
 
 interface Props {
   onError(error: Error): void;
-  onUpload(parsedJSON: any): void;
+  onUpload(registry: Registry): void;
 }
 
 const Upload = ({ onError, onUpload }: Props) => {
