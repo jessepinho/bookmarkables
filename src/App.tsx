@@ -38,10 +38,10 @@ export default class App extends React.Component<{}, State> {
   render() {
     return (
       <React.Fragment>
-        <Upload onUpload={this.handleUpload} onError={console.error} />
-        <AddBookmarkForm onAdd={this.handleAddBookmark} />
-        <ExportForm registry={this.state.registry} />
         <Search registry={this.state.registry} />
+        <AddBookmarkForm onAdd={this.handleAddBookmark} />
+        <Upload onUpload={this.handleUpload} onError={console.error} />
+        <ExportForm registry={this.state.registry} />
       </React.Fragment>
     );
   }
