@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import { Registry } from './schema';
-import Upload from './Upload';
 import Search from './Search';
+import Upload from './Upload';
 
 interface State {
   registry?: Registry;
@@ -12,7 +12,23 @@ export default class App extends React.Component<{}, State> {
   constructor(props: {}) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      registry: {
+        version: 1,
+        bookmarks: [
+          {
+            name: 'Foo',
+            tags: ['bar', 'baz', 'quux'],
+            url: 'http://example.com',
+          },
+          {
+            name: 'Google',
+            tags: ['search', 'engine'],
+            url: 'http://google.com',
+          },
+        ],
+      },
+    };
     this.handleUpload = this.handleUpload.bind(this);
   }
 
