@@ -20,26 +20,30 @@ describe('<AddBookmarkForm />', () => {
   describe('calling onAdd with a bookmark', () => {
     it('includes the name', () => {
       const name = 'Bookmark name';
-      wrapper.find('input[name="name"]').instance().value = name;
+      const input = wrapper.find('input[name="name"]').getDOMNode() as HTMLInputElement;
+      input.value = name;
       wrapper.find('input[type="submit"]').simulate('click');
       expect(onAdd).toHaveBeenCalledWith(expect.objectContaining({ name }));
     });
 
     it('includes the URL', () => {
       const url = 'http://example.com';
-      wrapper.find('input[name="url"]').instance().value = url;
+      const input = wrapper.find('input[name="url"]').getDOMNode() as HTMLInputElement;
+      input.value = url;
       wrapper.find('input[type="submit"]').simulate('click');
       expect(onAdd).toHaveBeenCalledWith(expect.objectContaining({ url }));
     });
 
     it('includes the tags as an array split on commas', () => {
-      wrapper.find('input[name="tags"]').instance().value = 'foo,bar,baz';
+      const input = wrapper.find('input[name="tags"]').getDOMNode() as HTMLInputElement;
+      input.value = 'foo,bar,baz';
       wrapper.find('input[type="submit"]').simulate('click');
       expect(onAdd).toHaveBeenCalledWith(expect.objectContaining({ tags: ['foo', 'bar', 'baz'] }));
     });
 
     it('strips whitespace from tag names', () => {
-      wrapper.find('input[name="tags"]').instance().value = 'foo, bar, baz';
+      const input = wrapper.find('input[name="tags"]').getDOMNode() as HTMLInputElement;
+      input.value = 'foo, bar, baz';
       wrapper.find('input[type="submit"]').simulate('click');
       expect(onAdd).toHaveBeenCalledWith(expect.objectContaining({ tags: ['foo', 'bar', 'baz'] }));
     });
