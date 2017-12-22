@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import AddBookmarkForm from './AddBookmarkForm';
 import { Registry } from './schema';
 import Search from './Search';
 import Upload from './Upload';
@@ -36,6 +37,7 @@ export default class App extends React.Component<{}, State> {
     return (
       <React.Fragment>
         <Upload onUpload={this.handleUpload} onError={console.error} />
+        <AddBookmarkForm onAdd={console.log} />
         {this.state.registry && <Search registry={this.state.registry} />}
       </React.Fragment>
     );
