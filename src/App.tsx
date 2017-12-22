@@ -1,7 +1,8 @@
 import * as React from 'react';
 
 import AddBookmarkForm from './AddBookmarkForm';
-import { Registry, Bookmark } from './schema';
+import { Bookmark, Registry } from './schema';
+import ExportForm from './ExportForm';
 import Search from './Search';
 import Upload from './Upload';
 
@@ -39,7 +40,8 @@ export default class App extends React.Component<{}, State> {
       <React.Fragment>
         <Upload onUpload={this.handleUpload} onError={console.error} />
         <AddBookmarkForm onAdd={this.handleAddBookmark} />
-        {this.state.registry && <Search registry={this.state.registry} />}
+        <ExportForm registry={this.state.registry} />
+        <Search registry={this.state.registry} />
       </React.Fragment>
     );
   }
