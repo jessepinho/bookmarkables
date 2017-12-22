@@ -18,12 +18,12 @@ const AddBookmarkForm = ({ onAdd }: Props) => {
   };
 
   return (
-    <form onSubmit={(event: React.FormEvent<HTMLFormElement>) => event.preventDefault()}>
+    <React.Fragment>
       <label>URL: <input type="text" name="url" ref={el => urlInput = el} /></label>
       <label>Name: <input type="text" name="name" ref={el => nameInput = el} /></label>
       <label>Tags (comma-separated): <input type="text" name="tags" ref={el => tagsInput = el} /></label>
       <input type="submit" value="Save" onClick={handleClick} />
-    </form>
+    </React.Fragment>
   );
 };
 
