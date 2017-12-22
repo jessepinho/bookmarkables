@@ -3,16 +3,16 @@ import { Registry } from './schema';
 
 interface Props {
   onError(error: Error): void;
-  onUpload(registry: Registry): void;
+  onImport(registry: Registry): void;
 }
 
-const Upload = ({ onError, onUpload }: Props) => {
+const ImportForm = ({ onError, onImport }: Props) => {
   let fileInput: HTMLInputElement | null = null;
   const fileReader = new FileReader();
 
   fileReader.onload = () => {
     try {
-      onUpload(JSON.parse(fileReader.result));
+      onImport(JSON.parse(fileReader.result));
     } catch (error) {
       onError(error);
     }
@@ -27,4 +27,4 @@ const Upload = ({ onError, onUpload }: Props) => {
   return <input type="file" ref={el => fileInput = el} onChange={handleOnChange} />;
 };
 
-export default Upload;
+export default ImportForm;
