@@ -1,12 +1,12 @@
 import * as React from 'react';
 
 import AddBookmarkForm from './AddBookmarkForm';
-import { Registry } from './schema';
+import { Registry, Bookmark } from './schema';
 import Search from './Search';
 import Upload from './Upload';
 
 interface State {
-  registry?: Registry;
+  registry: Registry;
 }
 
 export default class App extends React.Component<{}, State> {
@@ -30,6 +30,7 @@ export default class App extends React.Component<{}, State> {
         ],
       },
     };
+    this.handleAddBookmark = this.handleAddBookmark.bind(this);
     this.handleUpload = this.handleUpload.bind(this);
   }
 
@@ -37,7 +38,7 @@ export default class App extends React.Component<{}, State> {
     return (
       <React.Fragment>
         <Upload onUpload={this.handleUpload} onError={console.error} />
-        <AddBookmarkForm onAdd={console.log} />
+        <AddBookmarkForm onAdd={this.handleAddBookmark} />
         {this.state.registry && <Search registry={this.state.registry} />}
       </React.Fragment>
     );
@@ -45,5 +46,14 @@ export default class App extends React.Component<{}, State> {
 
   private handleUpload(registry: Registry): void {
     this.setState({ registry });
+  }
+
+  private handleAddBookmark(bookmark: Bookmark): void {
+    this.setState({
+      registry: {
+        ...this.state.registry,
+        bookmarks: [...this.state.registry.bookmarks, bookmark],
+      },
+    });
   }
 }
