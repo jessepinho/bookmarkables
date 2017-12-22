@@ -6,12 +6,23 @@ interface Props {
 }
 
 const AddBookmarkForm = ({ onAdd }: Props) => {
+  let nameInput: HTMLInputElement | null = null;
+  let tagsInput: HTMLInputElement | null = null;
+  let urlInput: HTMLInputElement | null = null;
+
+  const handleClick = () => {
+    if (nameInput && tagsInput && urlInput) {
+      const tags = tagsInput.value.split(',').map(tag => tag.trim());
+      onAdd({ name: nameInput.value, url: urlInput.value, tags });
+    }
+  };
+
   return (
     <form>
-      <label>URL: <input type="text" /></label>
-      <label>Name: <input type="text" /></label>
-      <label>Tags (comma-separated): <input type="text" /></label>
-      <input type="submit" value="Save" onClick={() => onAdd()} />
+      <label>URL: <input type="text" name="url" ref={el => urlInput = el} /></label>
+      <label>Name: <input type="text" name="name" ref={el => nameInput = el} /></label>
+      <label>Tags (comma-separated): <input type="text" name="tags" ref={el => tagsInput = el} /></label>
+      <input type="submit" value="Save" onClick={handleClick} />
     </form>
   );
 };
